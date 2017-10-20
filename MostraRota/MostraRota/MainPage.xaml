@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             xmlns:custom="clr-namespace:MostraRota.CustomControls"
+             xmlns:local="clr-namespace:MostraRota"
+             x:Class="MostraRota.MainPage" Title="Visualização de Rota">
+    <ContentPage.Content>
+        <Grid Padding="5" RowSpacing="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- mostrar distância total percorrida -->
+            <Label Grid.Row="0" Grid.Column="0" Text="{Binding DistTotal, StringFormat='{0:F0} m'}" FontSize="Small"
+                   HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+            
+            <!-- botão para iniciar/parar serviço de localização -->
+            <Button Grid.Row="0" Grid.Column="1" Text="{Binding IniciarParar}" Clicked="BtnIniciarParar_Clicked"/>
+
+            <!-- mapa para mostrar posição corrente e percurso percorrido -->
+            <custom:CustomMap x:Name="mapVisualizacao" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                              MapType="Street" HasScrollEnabled="True" HasZoomEnabled="True"
+                              IsShowingUser="True" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
